@@ -4,76 +4,82 @@ A data-driven web application that predicts sales based on multi-channel marketi
 
 1️⃣ Project Overview
 
-Marketing teams constantly invest in channels like TV, Radio, Social Media, and Search Ads—but it’s not always clear which channel contributes the most to sales or how budgets should be distributed.
+Marketing teams continually invest in channels like TV, Radio, Social Media, and Search Ads—yet it remains difficult to determine:
 
-This project solves that problem by combining Marketing Mix Modeling (MMM) with an ROI-driven optimization engine and a clean Flask-based dashboard.
+Which channels actually drive sales
 
-The goal is to give decision-makers a simple, visual way to:
+How much each channel contributes
 
-Estimate sales for any planned marketing spend
+What the ideal budget allocation should be
 
-Understand channel contribution
+How competitor activity impacts revenue
 
-Optimize the budget for maximum return
+This project solves that challenge using:
 
-Support strategic media planning
+ Marketing Mix Modeling (MMM)
+ Diminishing-returns based optimization logic
+ An interactive, business-friendly dashboard
+
+The system helps decision-makers to:
+
+Estimate sales for any media plan
+
+Understand multi-channel impact
+
+Optimize the budget for maximum ROI
+
+Support strategic media planning with evidence
 
 2️⃣ Business Value
-
-This system enables:
-
 Marketing & Growth Teams
 
 Evaluate spend effectiveness
 
-Compare different budget plans
+Compare alternative budget scenarios
 
-Understand diminishing returns across channels
+Identify high-performing channels
 
-Leadership & Strategy Teams
+Leadership & Strategy
 
-Estimate revenue impact before campaigns launch
+Estimate revenue impact before launching campaigns
 
-Identify the most cost-effective channels
+Choose the most cost-efficient media mix
 
-Make confident budget allocation decisions
+Reduce spend wastage and boost ROI
 
 Business Analysts
 
-Translate media spend into revenue forecasts
+Convert raw budget data into revenue insights
 
-Analyze competitor pressure
+Understand diminishing returns
 
-Build insights using a clear dashboard
+Support strategic decisions with a dashboard
 
-3️⃣ Techniques & Tools
+3️⃣ Techniques & Tools Used
+Modeling Approach
 
-Modeling Approach:
+Ridge Regression (stable + handles multicollinearity)
 
-Ridge Regression (stable and robust)
+Log-transformed features to model diminishing returns
 
-Log transforms to capture diminishing returns
+Channel-level ROI optimization using marginal ROI logic
 
-Marginal ROI–based budget allocation algorithm
-
-Tech Stack:
+Tech Stack
 
 Python
 
-Flask
+Flask (web application)
 
 Pandas
 
-Scikit-learn
+Scikit-Learn
 
-Bootstrap 5
+Bootstrap 5 (UI)
 
-Chart.js
+Chart.js (visualizations)
 
 4️⃣ Example Output
-
-Using the following media plan:
-
+Input Media Plan
 Channel	Spend (₹)
 TV	25,000
 Radio	22,000
@@ -87,34 +93,49 @@ Product Price: ₹120
 
 Competitor Spend: ₹15,000
 
-Model Prediction:
+Model Output
 
 Predicted Sales: ₹4,75,200.06
 
 ROI: 422.2%
 
-This scenario suggests that TV and Search are likely delivering higher incremental value compared to other channels.
+Insights:
+TV and Search show stronger marginal contribution, indicating higher ROI potential at scale.
 
 5️⃣ Key Features of the Dashboard
-Sales Predictor
+📈 Sales Predictor
 
-Enter marketing spend → get immediate sales forecast + ROI.
+Input channel spend → get
 
-Budget Optimizer
+Predicted sales
 
-Enter total budget → get recommended allocation across channels.
+Total spend
 
-Dashboard View
+ROI
+
+Dashboard visualization
+
+🎯 Budget Optimizer
+
+Input only total budget → system recommends
+
+Optimized TV/Radio/Social/Search allocation
+
+Expected sales
+
+ROI
+
+Visualization + dashboard export
+
+📊 Dashboard View
 
 KPI cards (Spend, Sales, ROI)
 
-Spend distribution pie chart
+Channel distribution pie chart
 
-Clear explanations for business users
+Clean, business-focused interface
 
 6️⃣ Project Structure
-
-```
 marketing-mix-optimizer/
 │
 ├── app/
@@ -138,25 +159,39 @@ marketing-mix-optimizer/
 ├── requirements.txt
 ├── LICENSE
 └── README.md
-```
-
 
 7️⃣ Skills Demonstrated
+Data & Modeling Skills
 
-Marketing Mix Modeling
+Marketing Mix Modeling (MMM)
 
-Regression modeling and evaluation
+Regression modeling
 
-Business analytics & ROI interpretation
+Optimization algorithms
+
+ROI computation
+
+Business Analysis Skills
+
+Translating data into business decisions
+
+Understanding marketing KPIs
+
+Scenario-based planning
+
+Dashboard storytelling
+
+Development Skills
 
 Flask application development
 
-Creating dashboards for business users
+UI/UX design with Bootstrap
 
-Translating data science into decisions
+Chart-based visualization
+
+End-to-end project structuring
 
 8️⃣ Author
 
 Hephzibah Paul
-
 Business Analyst | Data & AI Enthusiast
