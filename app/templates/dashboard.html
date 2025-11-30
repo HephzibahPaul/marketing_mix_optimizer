@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Marketing Mix Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-4">
+
+    <h2 class="mb-4 text-center">📊 Marketing Mix Analysis Dashboard</h2>
+
+    <!-- If no data is passed (GET), show a warning instead of default values -->
+    {% if no_data %}
+        <div class="alert alert-warning text-center">
+            ⚠ No data available yet.<br>
+            Please run a <strong>Sales Prediction</strong> or <strong>Budget Optimization</strong> first.
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-primary">Go to Home</a>
+        </div>
+
+    {% else %}
+
+    <!-- KPI CARDS -->
+    <div class="row text-center mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card shadow p-3">
+                <h6 class="text-muted">Total Media Spend</h6>
+                <h3 class="text-primary">₹ {{ total_spend }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow p-3">
+                <h6 class="text-muted">Predicted Sales</h6>
+                <h3 class="text-success">₹ {{ predicted_sales }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow p-3">
+                <h6 class="text-muted">Estimated ROI</h6>
+                <h3 class="text-danger">{{ roi }}%</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- PIE CHART -->
+    <div class="card shadow p-4 mb-3">
+        <h5 class="text-center mb-3">Channel Spend Distribution</h5>
+        <canvas id="spendChart"></canvas>
+
+        <p class="text-muted mt-3 small text-center">
+            This chart shows how your budget is split across TV, Radio, Social, and Search.
+        </p>
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="/" class="btn btn-secondary">Back to Home</a>
+    </div>
+
+    {% endif %}
+</div>
+
+<!-- Chart.js Script -->
+<script>
+    {% if not no_data %}
+        const spendData = {{ spend_data | safe }};
+
+        new Chart(
+            document.getElementById('spendChart'),
+            {
+                type: 'pie',
+                data: {
+                    labels: ['TV', 'Radio', 'Social', 'Search'],
+                    datasets: [{
+                        data: spendData,
+                        borderWidth: 1
+                    }]
+                }
+            }
+        );
+    {% endif %}
+</script>
+
+</body>
+</html>
