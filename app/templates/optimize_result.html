@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Optimized Budget Results</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="bg-light">
@@ -49,48 +48,26 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    <tr>
-                        <td>TV</td>
-                        <td>₹ {{ result.tv }}</td>
-                    </tr>
-                    <tr>
-                        <td>Radio</td>
-                        <td>₹ {{ result.radio }}</td>
-                    </tr>
-                    <tr>
-                        <td>Social</td>
-                        <td>₹ {{ result.social }}</td>
-                    </tr>
-                    <tr>
-                        <td>Search</td>
-                        <td>₹ {{ result.search }}</td>
-                    </tr>
+                    <tr><td>TV</td><td>₹ {{ result.tv }}</td></tr>
+                    <tr><td>Radio</td><td>₹ {{ result.radio }}</td></tr>
+                    <tr><td>Social</td><td>₹ {{ result.social }}</td></tr>
+                    <tr><td>Search</td><td>₹ {{ result.search }}</td></tr>
                 </tbody>
                 <tfoot class="table-light text-center">
-                    <tr>
-                        <th>Total</th>
-                        <th>₹ {{ total_budget }}</th>
-                    </tr>
+                    <tr><th>Total</th><th>₹ {{ total_budget }}</th></tr>
                 </tfoot>
             </table>
         </div>
     </div>
 
-    <!-- Pie chart for allocation -->
-    <div class="card shadow p-4 mb-4">
-        <h5 class="text-center mb-3">Channel Spend Distribution</h5>
-        <div style="height: 260px; width: 260px; margin: 0 auto;">
-            <canvas id="spendChart"></canvas>
-        </div>
-        <p class="text-muted mt-3 small text-center">
-            Visual breakdown of how the optimizer distributes your budget across TV, Radio, Social, and Search.
-        </p>
-    </div>
+    <p class="text-muted small text-center mb-4">
+        View detailed visual breakdown and KPIs in the Dashboard.
+    </p>
 
     <div class="d-flex justify-content-between mb-4">
         <a href="/optimize" class="btn btn-outline-secondary">Run Another Scenario</a>
 
-        <!-- Send optimized values to /dashboard as POST -->
+        <!-- Send optimized values to Dashboard -->
         <form action="/dashboard" method="POST">
             <input type="hidden" name="tv" value="{{ result.tv }}">
             <input type="hidden" name="radio" value="{{ result.radio }}">
@@ -98,46 +75,10 @@
             <input type="hidden" name="search" value="{{ result.search }}">
             <input type="hidden" name="price" value="{{ price }}">
             <input type="hidden" name="competitor" value="{{ competitor }}">
-            <button type="submit" class="btn btn-primary">
-                Open in Dashboard
-            </button>
+            <button type="submit" class="btn btn-primary">Open in Dashboard</button>
         </form>
     </div>
 
 </div>
-
-<script>
-    const ctx = document.getElementById('spendChart').getContext('2d');
-
-    const spendData = [
-        {{ result.tv }},
-        {{ result.radio }},
-        {{ result.social }},
-        {{ result.search }}
-    ];
-
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['TV', 'Radio', 'Social', 'Search'],
-            datasets: [{
-                data: spendData,
-                backgroundColor: ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: { boxWidth: 12 }
-                }
-            }
-        }
-    });
-</script>
-
 </body>
 </html>
