@@ -136,6 +136,7 @@ Channel distribution pie chart
 Clean, business-focused interface
 
 6️⃣ Project Structure
+```
 marketing-mix-optimizer/
 │
 ├── app/
@@ -159,6 +160,9 @@ marketing-mix-optimizer/
 ├── requirements.txt
 ├── LICENSE
 └── README.md
+```
+
+
 
 7️⃣ Skills Demonstrated
 Data & Modeling Skills
