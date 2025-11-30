@@ -50,10 +50,13 @@
         </div>
     </div>
 
-    <!-- PIE CHART -->
+    <!-- PIE CHART (Optimized Size) -->
     <div class="card shadow p-4 mb-3">
         <h5 class="text-center mb-3">Channel Spend Distribution</h5>
-        <canvas id="spendChart"></canvas>
+
+        <div style="height: 260px; width: 260px; margin: 0 auto;">
+            <canvas id="spendChart"></canvas>
+        </div>
 
         <p class="text-muted mt-3 small text-center">
             This chart shows how your budget is split across TV, Radio, Social, and Search.
@@ -71,20 +74,29 @@
 <script>
     {% if not no_data %}
         const spendData = {{ spend_data | safe }};
+        const ctx = document.getElementById('spendChart').getContext('2d');
 
-        new Chart(
-            document.getElementById('spendChart'),
-            {
-                type: 'pie',
-                data: {
-                    labels: ['TV', 'Radio', 'Social', 'Search'],
-                    datasets: [{
-                        data: spendData,
-                        borderWidth: 1
-                    }]
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['TV', 'Radio', 'Social', 'Search'],
+                datasets: [{
+                    data: spendData,
+                    backgroundColor: ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { boxWidth: 12 }
+                    }
                 }
             }
-        );
+        });
     {% endif %}
 </script>
 
