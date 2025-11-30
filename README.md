@@ -118,6 +118,10 @@ marketing-mix-optimizer/
 ├── app/
 │   ├── app.py
 │   └── templates/
+│       ├── index.html
+│       ├── dashboard.html
+│       ├── predict.html
+│       └── optimize.html
 │
 ├── src/
 │   ├── train_model.py
@@ -130,6 +134,7 @@ marketing-mix-optimizer/
 ├── requirements.txt
 ├── LICENSE
 └── README.md
+
 
 7️⃣ Skills Demonstrated
 
