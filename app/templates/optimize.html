@@ -7,37 +7,44 @@
 </head>
 
 <body class="bg-light">
+<div class="container mt-4">
 
-<div class="container mt-5">
-    <div class="card shadow p-4">
-        <h3 class="text-center mb-3">🎯 Marketing Budget Optimizer</h3>
-        <p class="text-muted text-center">Enter your total budget and let AI allocate it across channels.</p>
+    <h2 class="mb-4 text-center">💡 Marketing Budget Optimizer</h2>
 
+    <p class="text-muted text-center">
+        Enter your total media budget and business inputs. <br>
+        The optimizer will allocate spend across TV, Radio, Social and Search
+        to maximize estimated revenue under a diminishing-returns model.
+    </p>
+
+    <div class="card shadow p-4 mt-3">
         <form action="/optimize" method="POST">
-
             <div class="mb-3">
-                <label class="form-label">Total Budget (₹)</label>
-                <input type="number" name="total_budget" class="form-control" 
-                       min="10000" max="500000" step="1000" required>
+                <label class="form-label">Total Media Budget (₹)</label>
+                <input type="number" step="0.01" class="form-control" name="total_budget"
+                       placeholder="e.g. 100000" required>
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Product Price (₹)</label>
-                <input type="number" name="price" class="form-control"
-                       min="50" max="5000" step="1" required>
+                <label class="form-label">Product Price per Unit (₹)</label>
+                <input type="number" step="0.01" class="form-control" name="price"
+                       placeholder="e.g. 120" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Competitor Spend (₹)</label>
-                <input type="number" name="competitor" class="form-control"
-                       min="0" max="200000" step="1000" required>
+                <!-- IMPORTANT: name="competitor" -->
+                <input type="number" step="0.01" class="form-control" name="competitor"
+                       placeholder="e.g. 30000" required>
             </div>
 
-            <button class="btn btn-success w-100">Optimize Budget</button>
-
+            <div class="d-flex justify-content-between mt-4">
+                <a href="/" class="btn btn-outline-secondary">Back to Home</a>
+                <button type="submit" class="btn btn-primary">Run Optimization</button>
+            </div>
         </form>
     </div>
-</div>
 
+</div>
 </body>
 </html>

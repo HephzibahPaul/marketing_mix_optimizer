@@ -11,11 +11,13 @@ from src.optimizer import optimize_budget
 app = Flask(__name__)
 
 
+# -------------------- HOME PAGE --------------------
 @app.route("/")
 def home():
     return render_template("index.html")
 
 
+# -------------------- SALES PREDICTION --------------------
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
     if request.method == "GET":
@@ -46,26 +48,37 @@ def predict():
     )
 
 
+# -------------------- BUDGET OPTIMIZER --------------------
 @app.route("/optimize", methods=["GET", "POST"])
 def optimize():
     if request.method == "GET":
+        # Show the form
         return render_template("optimize.html")
 
+    # Read exactly the same names as in optimize.html
     total_budget = float(request.form["total_budget"])
     price = float(request.form["price"])
     competitor = float(request.form["competitor"])
 
+    # Call optimizer
     result = optimize_budget(total_budget, price, competitor)
+
     roi = round(((result["predicted_sales"] - total_budget) / total_budget) * 100, 2)
+
+    spend_data = [result["tv"], result["radio"], result["social"], result["search"]]
 
     return render_template(
         "optimize_result.html",
         result=result,
         total_budget=total_budget,
         roi=roi,
+        spend_data=spend_data,
+        price=price,
+        competitor=competitor,
     )
 
 
+# -------------------- DASHBOARD --------------------
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
     if request.method == "POST":
@@ -88,15 +101,13 @@ def dashboard():
             predicted_sales=predicted_sales,
             roi=roi,
             spend_data=spend_data,
-            no_data=False
+            no_data=False,
         )
 
-    # GET request → no data yet
-    return render_template(
-        "dashboard.html",
-        no_data=True
-    )
+    # GET request → no input yet
+    return render_template("dashboard.html", no_data=True)
 
 
+# -------------------- RUN APP --------------------
 if __name__ == "__main__":
     app.run(debug=True)
