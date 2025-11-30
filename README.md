@@ -158,4 +158,4 @@ Translating data science into decisions
 8️⃣ Author
 
 Hephzibah Paul
-Business Analyst | Full-Stack Developer | Data & AI Enthusiast
+Business Analyst | Data & AI Enthusiast
