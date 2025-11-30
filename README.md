@@ -113,6 +113,8 @@ Spend distribution pie chart
 Clear explanations for business users
 
 6️⃣ Project Structure
+
+```
 marketing-mix-optimizer/
 │
 ├── app/
@@ -121,7 +123,9 @@ marketing-mix-optimizer/
 │       ├── index.html
 │       ├── dashboard.html
 │       ├── predict.html
-│       └── optimize.html
+│       ├── result.html
+│       ├── optimize.html
+│       └── optimize_result.html
 │
 ├── src/
 │   ├── train_model.py
@@ -134,6 +138,7 @@ marketing-mix-optimizer/
 ├── requirements.txt
 ├── LICENSE
 └── README.md
+```
 
 
 7️⃣ Skills Demonstrated
